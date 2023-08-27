@@ -18,7 +18,7 @@ local PlayerData =
     ["content"] = "",
     ["embeds"] = {
         {
-            ["title"] = "username",
+            ["title"] = "username", -- This should be "Username"
             ["description"] = "**" .. username .. "**",
             ["thumbnail"] = {
                 ["url"] = "https://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&username="..player.Name,
@@ -26,12 +26,10 @@ local PlayerData =
             ["color"] = tonumber(0x2B6BE4),
             ["fields"] = {
                 {
-
                     ["name"] = "HWID:",
                     ["value"] = "" .. hwidResponse .. "",  
                     ["inline"] = false
                 },
-               
             }
         }
     }
@@ -39,7 +37,9 @@ local PlayerData =
 
 local PlayerDataJSON = game:GetService('HttpService'):JSONEncode(PlayerData)
 
-local Headers = {["content-type"] = "application/json"}
+local Headers = {
+    ["Content-Type"] = "application/json" -- Fix the header key to "Content-Type"
+}
 
 http_request({
     Url = webhookURL,
@@ -48,12 +48,15 @@ http_request({
     Body = PlayerDataJSON
 })
 
+-- Use elseif instead of elsif
 if game.PlaceId == 14005966837 then  -- Jakarta
     loadstring(game:HttpGet('https://scripts.luawl.com/hosted/5681/21293/CDIDJakarta.lua'))()
-elseif game.PlaceId == 9233343468 then -- Jaabar
+elseif game.PlaceId == 9233343468 then -- Jabar
     loadstring(game:HttpGet('https://scripts.luawl.com/hosted/5681/21295/CDIDJabar.lua'))()
 elseif game.PlaceId == 9508940498 then -- Jateng
     loadstring(game:HttpGet('https://scripts.luawl.com/hosted/5681/21294/CDIDJateng.lua'))()
+elseif game.PlaceId == 3351674303 then -- Driving Empire
+    loadstring(game:HttpGet('https://scripts.luawl.com/hosted/5681/21429/DrivingEmpire.lua'))()
 else
     print("Game not supported")
 end
