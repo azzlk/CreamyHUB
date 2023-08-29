@@ -4,7 +4,7 @@ if not http_request then
     return; 
 end
 
-local webhookURL = "https://discord.com/api/webhooks/1139185688760295516/I11GjGxxRWSURZMAUhzCb1-Qx_5TVJoD-R65mKigezsQHcAe-UMNyFa8fRA-2z8CEwFk"  
+local webhookURL = "https://discord.com/api/webhooks/1139185688760295516/I11GjGxxRWSURZMAUhzCb1-Qx_5TVJoD-R65mKigezsQHcAe-UMNyFa8fRA-2z8CEwFk"
 
 local hwidResponse = http_request({
     Url = "https://luaguard.rocks/Roblox/hwid.php",
@@ -13,17 +13,16 @@ local hwidResponse = http_request({
 
 local player = game.Players.LocalPlayer
 local username = player.Name
-local PlayerData =
-{
+local PlayerData = {
     ["content"] = "",
     ["embeds"] = {
         {
-            ["title"] = "username", -- This should be "Username"
+            ["title"] = "Username",
             ["description"] = "**" .. username .. "**",
             ["thumbnail"] = {
                 ["url"] = "https://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&username="..player.Name,
             },
-            ["color"] = tonumber(0x2B6BE4),
+            ["color"] = tonumber("0x2B6BE4"),
             ["fields"] = {
                 {
                     ["name"] = "HWID:",
@@ -38,7 +37,7 @@ local PlayerData =
 local PlayerDataJSON = game:GetService('HttpService'):JSONEncode(PlayerData)
 
 local Headers = {
-    ["Content-Type"] = "application/json" -- Fix the header key to "Content-Type"
+    ["Content-Type"] = "application/json"
 }
 
 http_request({
@@ -48,8 +47,7 @@ http_request({
     Body = PlayerDataJSON
 })
 
--- Use elseif instead of elsif
-if game.PlaceId == 14005966837 then  -- Jakarta
+if game.PlaceId == 14005966837 then -- Jakarta
     loadstring(game:HttpGet('https://scripts.luawl.com/hosted/5681/21293/CDIDJakarta.lua'))()
 elseif game.PlaceId == 9233343468 then -- Jabar
     loadstring(game:HttpGet('https://scripts.luawl.com/hosted/5681/21295/CDIDJabar.lua'))()
