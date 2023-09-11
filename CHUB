@@ -55,6 +55,8 @@ elseif game.PlaceId == 9508940498 then -- Jateng
     loadstring(game:HttpGet('https://scripts.luawl.com/hosted/5681/21294/CDIDJateng.lua'))()
 elseif game.PlaceId == 3351674303 then -- DE
     loadstring(game:HttpGet('https://scripts.luawl.com/hosted/5681/21429/DrivingEmpire.lua'))()
+elseif game.PlaceId == 891852901 then
+    loadstring(game:HttpGet('https://scripts.luawl.com/hosted/5681/21607/Greenville.lua'))()
 else
     print("Game not supported")
 end
